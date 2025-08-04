@@ -13,7 +13,7 @@ jobs:
         id: cachedeps
         uses: ./.github/Actions/cached-deps
         with:
-          usecache: "false"
+          usecache: "true"
       - name: print outputs
         run: echo "cache used? ${{steps.cachedeps.outputs.cache-used}}"
       - name: Lint code
