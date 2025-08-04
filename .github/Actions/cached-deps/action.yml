@@ -5,6 +5,10 @@ inputs:
     description: "Indicate whether to use cache"
     required: false
     default: "true"
+outputs:
+  cache-used:
+    description: "Indicates whether the cashe was used or not"
+    value: ${{steps.depinstall.outputs.cache}}
 runs:
   using: "composite"
   steps:
@@ -16,6 +20,10 @@ runs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
+      id: depinstall
+
       if: steps.cache.outputs.cache-hit != 'true' || ${{inputs.usecache != 'true' }}
-      run: npm ci
+      run: |
+        npm ci
+        echo "cache=${{inputs.usecache}}"
       shell: bash
