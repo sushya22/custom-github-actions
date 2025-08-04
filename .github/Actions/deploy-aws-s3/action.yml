@@ -1,0 +1,5 @@
+name: "deplo to AWS s3 bucket"
+description: "This yml is JS action"
+runs:
+  using: "node16"
+  main: "main.js"
