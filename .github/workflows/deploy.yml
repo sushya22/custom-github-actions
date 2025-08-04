@@ -70,4 +70,4 @@ jobs:
       - name: get code
         uses: actions/checkout@v3
       - name: execute custom js action
-        uses: ./.github/Actions/deplo-aws-s3
+        uses: ./.github/Actions/deploy-aws-s3
